@@ -203,7 +203,6 @@ export default function AyatListClient({ ayatList }) {
             <div className="flex items-center gap-4">
               <AudioPlayer
                 audioUrl={audioUrl}
-                ayatNomor={currentAyat.nomorAyat}
                 isPlaying={!isPaused}
                 onPlay={() => handlePlay(currentPlayingIndex)}
                 onEnded={() => handleAudioEnd(currentPlayingIndex)}
