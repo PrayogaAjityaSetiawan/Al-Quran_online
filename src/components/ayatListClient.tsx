@@ -115,7 +115,9 @@ export default function AyatListClient({ ayatList }) {
         {ayatList.map((ayat, index) => (
           <div
             key={ayat.nomorAyat}
-            ref={(el) => (cardsRef.current[index] = el)}
+            ref={(el) => {
+    if (el) cardsRef.current[index] = el;
+  }}
             className="relative mb-4 border border-gray-200 p-4 rounded-lg transition-all cursor-pointer"
             onClick={() => handlePlay(index)}
           >
