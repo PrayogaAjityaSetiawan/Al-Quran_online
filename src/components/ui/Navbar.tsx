@@ -41,6 +41,7 @@ const Navbar = () => {
               Al-Quranku
             </Link>
 
+
             <div className="hidden md:flex items-center gap-2 flex-1 justify-center">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
@@ -79,10 +80,30 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+      </nav>
 
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-[#254F22]/10 dark:border-[#A3DC9A]/10 bg-white/95 dark:bg-[#0f1a0e]/95 backdrop-blur-md h-screen ">
-            <div className="px-4 py-3 space-y-1">
+      {mobileMenuOpen && (
+        <div
+          className="md:hidden fixed inset-0 z-[999] bg-black/30 backdrop-blur-sm"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <div
+            className="absolute top-0 left-0 m-4 rounded-2xl w-[70%] max-w-[280px] bg-white/95 dark:bg-[#0f1a0e]/95 backdrop-blur-md border border-[#254F22]/10 dark:border-[#A3DC9A]/10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 h-16 border-b border-[#254F22]/10 dark:border-[#A3DC9A]/10">
+              <span className="text-lg font-bold text-[#254F22] dark:text-[#A3DC9A]">
+                Al-Quranku
+              </span>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-full hover:bg-[#254F22]/10 dark:hover:bg-[#A3DC9A]/10 transition-colors"
+              >
+                <X size={18} className="text-[#254F22] dark:text-[#A3DC9A]" />
+              </button>
+            </div>
+
+            <div className="px-3 py-4 space-y-1">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -90,7 +111,7 @@ const Navbar = () => {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 text-sm font-medium ${
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-sm font-medium ${
                       isActive
                         ? "bg-[#254F22] dark:bg-[#A3DC9A]/20 text-white dark:text-[#A3DC9A]"
                         : "text-[#254F22]/70 dark:text-[#e8f5e4]/60 hover:bg-[#254F22]/10 dark:hover:bg-[#A3DC9A]/10"
@@ -103,9 +124,17 @@ const Navbar = () => {
                 );
               })}
             </div>
+
+            <div className="px-3 pb-4">
+              <div className="bg-[#254F22]/5 dark:bg-[#A3DC9A]/5 border border-[#254F22]/10 dark:border-[#A3DC9A]/10 rounded-xl px-3 py-2">
+                <p className="text-[11px] text-[#254F22]/50 dark:text-[#A3DC9A]/50 leading-relaxed">
+                  © {new Date().getFullYear()} Data Al-Qur'an disediakan oleh equran.id
+                </p>
+              </div>
+            </div>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </>
   );
 };

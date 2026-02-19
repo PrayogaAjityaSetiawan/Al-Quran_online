@@ -13,12 +13,10 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-6 md:px-20 pt-20 relative overflow-hidden dark:bg-[#0f1a0e]">
 
-      {/* Background blur orb */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#254F22]/5 dark:bg-[#A3DC9A]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-3xl w-full flex flex-col items-center text-center gap-6 relative z-10">
 
-        {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#254F22]/20 dark:border-[#A3DC9A]/20 bg-[#254F22] dark:bg-[#A3DC9A]/10 text-white dark:text-[#A3DC9A] overflow-hidden shadow-sm">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 dark:bg-[#A3DC9A] animate-pulse" />
           <span ref={textRef} className="text-sm font-medium tracking-wide">
@@ -26,7 +24,6 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Judul */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-[#254F22] dark:text-[#e8f5e4]">
           Baca Al-Qur'an
           <br />
@@ -37,13 +34,11 @@ export default function Hero() {
           Lebih Bermakna
         </h1>
 
-        {/* Deskripsi */}
         <p className="text-base md:text-lg text-[#254F22]/70 dark:text-[#e8f5e4]/60 max-w-xl leading-relaxed">
           Akses 30 juz Al-Qur'an lengkap dengan terjemahan Indonesia
           dan audio tilawah terbaik.
         </p>
 
-        {/* Tombol CTA */}
         <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
           <Link
             href="/alquran"

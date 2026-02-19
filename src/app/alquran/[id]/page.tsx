@@ -9,7 +9,11 @@ export default async function Page({ params }) {
 
   return (
     <div className="min-h-screen w-full px-4">
-      <AyatListClient ayatList={data.data.ayat} />
+      <AyatListClient ayatList={data.data.ayat} infoSurat = {{
+        namaLatin: data.data.nama_latin,
+        nama: data.data.nama,
+        nomor: data.data.nomor,
+      }}/>
     </div>
   );
 }

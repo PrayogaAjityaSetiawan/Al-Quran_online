@@ -8,7 +8,7 @@ import { surat } from '@/types/surat';
 
 export default function SuratList({ data }: { data: surat[] }) {
   const [search, setSearch] = useState('');
-  const [debouncedSearch, { isPending }] = useDebounce(search, 3000);
+  const [debouncedSearch, { isPending }] = useDebounce(search, 500);
 
   const filtered = !debouncedSearch
     ? data
@@ -24,7 +24,6 @@ export default function SuratList({ data }: { data: surat[] }) {
 
   return (
     <>
-      {/* Search Bar */}
       <div className="relative max-w-[600px] mx-auto mb-6">
         <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
           {isPending() ? (
@@ -66,7 +65,7 @@ export default function SuratList({ data }: { data: surat[] }) {
 
         <input
           type="text"
-          placeholder="Cari surat (nama / arti / nomor)..."
+          placeholder="Cari surat "
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full pl-11 pr-10 py-3 bg-white border border-gray-200 rounded-2xl text-sm text-gray-800 placeholder-gray-400 shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 hover:border-gray-300"
@@ -94,7 +93,6 @@ export default function SuratList({ data }: { data: surat[] }) {
         )}
       </div>
 
-      {/* Result Count */}
       {debouncedSearch && !isPending() && (
         <p className="text-xs text-gray-400 -mt-4 mb-5 px-1">
           Ditemukan{' '}
@@ -103,7 +101,6 @@ export default function SuratList({ data }: { data: surat[] }) {
         </p>
       )}
 
-      {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 w-full p-2 md:p-4">
         {isPending() ? (
           Array.from({ length: 12 }).map((_, i) => <CardSuratSkeleton key={i} />)

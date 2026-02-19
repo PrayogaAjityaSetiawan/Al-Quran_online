@@ -1,35 +1,18 @@
 "use client"
-import React  from "react"
+
+import { useRef } from "react"
 import { useParams } from "next/navigation"
-import { useEffect, useRef } from "react"
-import { gsap } from "gsap"
 import CardSurat from "./cardSurat"
 import { surat } from "@/types/surat"
-import { memo } from "react"
 
-const Sidebar = ({ data }: { data: surat[] }) => {
+type Props = {
+  data: surat[]
+}
+
+const Sidebar = ({ data }: Props) => {
   const params = useParams()
   const activeSurat = Number(params?.id)
   const containerRef = useRef<HTMLDivElement | null>(null)
-
-  useEffect(() => {
-    if (!containerRef.current) return
-
-    gsap.fromTo(
-      containerRef.current.children,
-      {
-        opacity: 0,
-        x: -20,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.5,
-        stagger: 0.1, 
-        ease: "power2.out",
-      }
-    )
-  }, [])
 
   return (
     <div ref={containerRef} className="flex flex-col gap-2">
@@ -38,10 +21,7 @@ const Sidebar = ({ data }: { data: surat[] }) => {
 
         return (
           <div key={surat.nomor}>
-            <CardSurat
-              surat={surat}
-              active={isActive}
-            />
+            <CardSurat surat={surat} active={isActive} />
           </div>
         )
       })}
@@ -49,4 +29,4 @@ const Sidebar = ({ data }: { data: surat[] }) => {
   )
 }
 
-export default memo(Sidebar)
+export default Sidebar
