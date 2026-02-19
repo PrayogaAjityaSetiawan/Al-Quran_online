@@ -13,7 +13,7 @@ export default async function Page({ params }) {
         namaLatin: data.data.nama_latin,
         nama: data.data.nama,
         nomor: data.data.nomor,
-      }}/>
+      }} />
     </div>
   );
 }

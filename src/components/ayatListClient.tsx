@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Menu } from "lucide-react";
 import { useRouter } from "next/navigation";
 import CardAyat from "./cardAyat";
 import AudioPlayer from "./ui/audioPlayer";
@@ -26,7 +26,6 @@ export default function AyatListClient({ ayatList, infoSurat }: ayatListProps) {
   const [currentPlayingIndex, setCurrentPlayingIndex] = useState<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-
   const hasPrev = infoSurat.nomor > 1;
   const hasNext = infoSurat.nomor < 114;
 
@@ -89,7 +88,6 @@ export default function AyatListClient({ ayatList, infoSurat }: ayatListProps) {
 
   return (
     <>
-      {/* Header surat */}
       <div className="max-w-4xl mx-auto pb-6">
         <div className="w-full p-6 rounded-2xl bg-[#254F22] text-white text-center space-y-1">
           <p className="text-sm text-white/60">Surat ke-{infoSurat.nomor}</p>
@@ -98,7 +96,7 @@ export default function AyatListClient({ ayatList, infoSurat }: ayatListProps) {
         </div>
       </div>
 
-      {/* List ayat */}
+
       <div className="relative flex flex-col w-full">
         {ayatList.map((ayat, index) => (
           <CardAyat
@@ -114,7 +112,6 @@ export default function AyatListClient({ ayatList, infoSurat }: ayatListProps) {
         ))}
       </div>
 
-      {/* Navigasi surat */}
       <div className="max-w-4xl mx-auto flex justify-between items-center gap-4 py-10">
         {hasPrev ? (
           <button
@@ -143,7 +140,6 @@ export default function AyatListClient({ ayatList, infoSurat }: ayatListProps) {
         ) : <div />}
       </div>
 
-      {/* Audio Player Bar */}
       {currentPlayingIndex !== null && audioUrl && (
         <div className="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#0f1a0e]/90 border-t border-[#254F22]/10 dark:border-[#A3DC9A]/10">
           <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-4">
