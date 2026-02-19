@@ -1,20 +1,20 @@
 "use client"
-
+import React  from "react"
 import { useParams } from "next/navigation"
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import CardSurat from "./cardSurat"
+import { surat } from "@/types/surat"
+import { memo } from "react"
 
-const Sidebar = ({ data }: { data: any[] }) => {
+const Sidebar = ({ data }: { data: surat[] }) => {
   const params = useParams()
   const activeSurat = Number(params?.id)
-
   const containerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (!containerRef.current) return
 
-    // Animasi tiap item di sidebar
     gsap.fromTo(
       containerRef.current.children,
       {
@@ -25,7 +25,7 @@ const Sidebar = ({ data }: { data: any[] }) => {
         opacity: 1,
         x: 0,
         duration: 0.5,
-        stagger: 0.1, // delay tiap item
+        stagger: 0.1, 
         ease: "power2.out",
       }
     )
@@ -49,4 +49,4 @@ const Sidebar = ({ data }: { data: any[] }) => {
   )
 }
 
-export default Sidebar
+export default memo(Sidebar)
