@@ -84,7 +84,9 @@ export default function AyatListClient({ ayatList }) {
             key={ayat.nomorAyat}
             ayat={ayat}
             index={index}
-            ref={(el) => (cardsRef.current[index] = el)}
+            ref={(el) => {
+              if (el) cardsRef.current[index] = el;
+            }}
             currentPlayingIndex={currentPlayingIndex}
             onPlay={handlePlay}
           />
